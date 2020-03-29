@@ -80,6 +80,11 @@
                             <RowDefinition Height="100"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
+                        <Image x:Name="bgimage" HorizontalAlignment="Left" Height="720" Margin="-7,-71,-6,-7" VerticalAlignment="Top" Width="1279" Grid.RowSpan="2" Stretch="UniformToFill" Opacity="0.4">
+                            <Image.Effect>
+                                <BlurEffect Radius="51"/>
+                            </Image.Effect>
+                        </Image>
                         <TextBlock x:Name="MusicNameTextBlock" Margin="20,10,20,0" VerticalAlignment="Top" FontSize="20" Height="30" TextTrimming="CharacterEllipsis">
                             <TextBlock.Effect>
                                 <DropShadowEffect Opacity="0.5" ShadowDepth="3"/>
@@ -88,8 +93,7 @@
                         <TextBlock x:Name="ArtistTextBlock" Margin="20,45,20,0" VerticalAlignment="Top" FontSize="14" Height="21" TextTrimming="CharacterEllipsis">
                             <TextBlock.Effect>
                                 <DropShadowEffect Opacity="0.5" ShadowDepth="3"/>
-                            </TextBlock.Effect>
-                        </TextBlock>
+                            </TextBlock.Effect></TextBlock>
                         <TextBlock x:Name="GenreTextBlock" Margin="20,71,20,0" VerticalAlignment="Top" FontSize="14" Height="21" TextTrimming="CharacterEllipsis">
                             <TextBlock.Effect>
                                 <DropShadowEffect Opacity="0.5" ShadowDepth="3"/>
@@ -241,7 +245,7 @@
                     <TabItem Header="General">
                         <StackPanel>
                             <GroupBox Header="Playing Settings" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
-                                
+
                                 <StackPanel>
                                     <CheckBox x:Name="KpmSwitchCheckBox" Content="Calculate initial speed in score" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                                     <StackPanel Orientation="Horizontal">
@@ -645,6 +649,7 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
+            <Image Height="78" Width="230"/>
         </TabControl>
     </Grid>
 </Controls:MetroWindow>

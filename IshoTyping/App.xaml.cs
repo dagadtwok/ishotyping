@@ -18,6 +18,7 @@ using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Research.DynamicDataDisplay.PointMarkers;
 using DiscordRPC;
+using System.Windows.Media.Imaging;
 
 namespace IshoTyping
 {
@@ -61,7 +62,7 @@ namespace IshoTyping
             {
                 client.SetPresence(new RichPresence()
                 {
-                    Details = "Playing:" + song,
+                    Details = "Playing: " + song,
                     State = "Typing away",
                     Assets = new Assets()
                     {
@@ -1014,7 +1015,8 @@ namespace IshoTyping
             nowline = 0;
             linemode = 0;
             lineupdate(0);
-            RPC(fmlist[foldernumber][musicnumber].artist + " " + fmlist[foldernumber][musicnumber].name);
+            mainWindow.bgimage.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "IMG\\" + fmlist[foldernumber][musicnumber].name + ".jpg"));
+            RPC(fmlist[foldernumber][musicnumber].name + " by " +  fmlist[foldernumber][musicnumber].artist);
         }
 
         void Copy_Hash_Value_Click(object sender, RoutedEventArgs e)
