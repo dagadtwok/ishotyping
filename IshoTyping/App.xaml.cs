@@ -31,7 +31,7 @@ namespace IshoTyping
 
     public partial class App : Application
     {
-        static string Version = "1.3.1";
+        static string Version = "1.3.2";
         static bool SV = false; // サテライト可能の場合のみ true にする
         static string path = "app_a.config"; // データ保存先
 
