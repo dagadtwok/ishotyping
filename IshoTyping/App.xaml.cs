@@ -387,14 +387,10 @@ namespace IshoTyping
             mainWindow.PlayMainGridPanel.LostKeyboardFocus += PlayMainGridPanel_LostKeyboardFocus;
             mainWindow.CharacterSizeSlider.ValueChanged += CharacterSizeSlider_ValueChanged;
             mainWindow.VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
-            mainWindow.TweetCommentTextBox.TextChanged += TweetCommentTextBox_TextChanged;
-            mainWindow.ResultCopyButton.Click += ResultCopyButton_Click;
-            mainWindow.TweetButton.Click += TweetButton_Click;
             mainWindow.ReplayButton.Click += ReplayButton_Click;
 
             mainWindow.KpmSwitchCheckBox.Click += KpmSwitchCheckBox_Click;
             mainWindow.OffsetSlider.ValueChanged += OffsetSlider_ValueChanged;
-            mainWindow.AuthorizationButton.Click += AuthorizationButton_Click;
 
 
             mainWindow.Closed += mainWindow_Closed;
@@ -406,18 +402,7 @@ namespace IshoTyping
             loadsave();
 
 
-            // Twitterの認証らへん
-            if (Accestoken == "")
-            {
-                mainWindow.AuthorizationTextBlock.Text = "認証されていません";
-                mainWindow.TweetButton.IsEnabled = false;
-            }
-            else
-            {
-                mainWindow.AuthorizationTextBlock.Text = "認証されています";
-                mainWindow.AuthorizationButton.Content = "再認証";
-            }
-
+           
             // 表示
             mainWindow.Show();
         }
@@ -1295,60 +1280,17 @@ namespace IshoTyping
 
         void TweetCommentTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            string resulttweetcontent = "";
-            if (mainWindow.IncludeArtistCheckBox.IsChecked == true)
-                resulttweetcontent = resulttweetcontent1 + "\n" + resulttweetcontent2 + "\n" + resulttweetcontent3;
-            else
-                resulttweetcontent = resulttweetcontent1 + "\n" + resulttweetcontent3;
-            int remain = 140;
-            remain -= 8;
-            remain -= resulttweetcontent.Length;
-            remain -= mainWindow.TweetCommentTextBox.Text.Length;
-            mainWindow.TweetCommentRemainTextBlock.Text = remain + "";
-            if (remain < 0)
-            {
-                mainWindow.TweetCommentRemainTextBlock.Foreground = Brushes.Red;
-                mainWindow.TweetButton.IsEnabled = false;
-            }
-            else
-            {
-                mainWindow.TweetCommentRemainTextBlock.Foreground = Brushes.Black;
-                mainWindow.TweetButton.IsEnabled = true;
-            }
+            
         }
 
         void ResultCopyButton_Click(object sender, RoutedEventArgs e)
         {
-            string resulttweetcontent = "";
-            if (mainWindow.IncludeArtistCheckBox.IsChecked == true)
-                resulttweetcontent = resulttweetcontent1 + "\n" + resulttweetcontent2 + "\n" + resulttweetcontent3;
-            else
-                resulttweetcontent = resulttweetcontent1 + "\n" + resulttweetcontent3;
-            Clipboard.SetText(resulttweetcontent);
+           
         }
 
         void TweetButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                TwitterService service = new TwitterService(consumerkey, consumersecret);
-                service.AuthenticateWith(Accestoken, Accestokensecret);
-
-                string resulttweetcontent = "";
-                if(mainWindow.IncludeArtistCheckBox.IsChecked == true)
-                    resulttweetcontent = resulttweetcontent1 + "\n" + resulttweetcontent2 + "\n" + resulttweetcontent3;
-                else
-                    resulttweetcontent = resulttweetcontent1 + "\n" + resulttweetcontent3;
-
-                if (mainWindow.TweetCommentTextBox.Text.Length == 0)
-                        service.SendTweet(new SendTweetOptions { Status = resulttweetcontent + "\n#イショタイ" });
-                else
-                    service.SendTweet(new SendTweetOptions { Status = resulttweetcontent + "\n" + mainWindow.TweetCommentTextBox.Text + "\n#イショタイ" });
-            }
-            catch (System.Net.WebException exception)
-            {
-                MessageBox.Show("Twitter投稿中にエラーが発生しました。\n\n" + exception.ToString());
-            }
+            
         }
 
         void ReplayButton_Click(object sender, RoutedEventArgs e)
@@ -1394,28 +1336,7 @@ namespace IshoTyping
 
         void AuthButton_Click(object sender, RoutedEventArgs e)
         {
-            var _ac = Accestoken;
-            var _as = Accestokensecret;
 
-            try
-            {
-                OAuthAccessToken oaat = ts.GetAccessToken(oart, aw.PinTextBox.Text);
-
-                Accestoken = oaat.Token;
-                Accestokensecret = oaat.TokenSecret;
-                mainWindow.TweetButton.IsEnabled = true;
-                mainWindow.AuthorizationTextBlock.Text = "認証されています";
-                mainWindow.AuthorizationButton.Content = "再認証";
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show("認証できませんでした。");
-                Accestoken = _ac;
-                Accestokensecret = _as;
-            }
-
-            aw.Visibility = Visibility.Collapsed;
-            aw = null;
         }
 
 
@@ -6013,8 +5934,6 @@ namespace IshoTyping
                  + "kpm:" + kpm + "\n" + "Cmb:" + maxcombo + "\n"
                  + "Comp/Fail:" + complete + "/" + failed;
 
-            mainWindow.TweetCommentTextBox.Text = "";
-            TweetCommentTextBox_TextChanged(null, null);
 
 
             // Detailの処理
