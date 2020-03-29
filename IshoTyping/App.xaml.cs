@@ -126,7 +126,7 @@ namespace IshoTyping
         /// kpmの計算方法を設定
         /// false:初速を含める　true:初速を含めない（より正確）
         /// </summary>
-        bool kpmswitch = false;
+        bool kpmswitch = true;
 
         /// <summary>
         /// 正打での加点
@@ -425,7 +425,6 @@ namespace IshoTyping
             mainWindow.VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
             mainWindow.ReplayButton.Click += ReplayButton_Click;
 
-            mainWindow.KpmSwitchCheckBox.Click += KpmSwitchCheckBox_Click;
             mainWindow.OffsetSlider.ValueChanged += OffsetSlider_ValueChanged;
 
 
@@ -472,7 +471,6 @@ namespace IshoTyping
                 mainWindow.VolumeSlider.Value = volume * mainWindow.VolumeSlider.Maximum;
                 volumereflect();
 
-                mainWindow.KpmSwitchCheckBox.IsChecked = kpmswitch;
 
                 experimentalvalue = s.experimentalvalue;
                 mainWindow.ExperimentalValueTextBlock.Text = "exp:" + experimentalvalue;
@@ -1363,12 +1361,6 @@ namespace IshoTyping
         void AuthButton_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-
-        void KpmSwitchCheckBox_Click(object sender, RoutedEventArgs e)
-        {
-            kpmswitch = (bool)mainWindow.KpmSwitchCheckBox.IsChecked;
         }
 
         void OffsetSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

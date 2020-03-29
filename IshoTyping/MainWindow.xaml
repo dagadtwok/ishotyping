@@ -80,7 +80,7 @@
                             <RowDefinition Height="100"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Image x:Name="bgimage" HorizontalAlignment="Left" Height="720" Margin="-7,-71,-6,-7" VerticalAlignment="Top" Width="1279" Grid.RowSpan="2" Stretch="UniformToFill" Opacity="0.4">
+                        <Image x:Name="bgimage" HorizontalAlignment="Center" Height="720" Margin="-7,-71,-6,-7" VerticalAlignment="Center" Width="1279" Grid.RowSpan="2" Stretch="UniformToFill" Opacity="0.4">
                             <Image.Effect>
                                 <BlurEffect Radius="51"/>
                             </Image.Effect>
@@ -247,7 +247,6 @@
                             <GroupBox Header="Playing Settings" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
 
                                 <StackPanel>
-                                    <CheckBox x:Name="KpmSwitchCheckBox" Content="Calculate initial speed in score" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" Text="Offset:" VerticalAlignment="Top"/>
                                         <Slider x:Name="OffsetSlider" Maximum="500" Minimum="-500" Margin="10" VerticalAlignment="Top" Width="250" AutoToolTipPlacement="TopLeft" />
