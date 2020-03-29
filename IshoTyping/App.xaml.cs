@@ -17,8 +17,7 @@ using System.Windows.Input;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Research.DynamicDataDisplay.PointMarkers;
-
-
+using DiscordRPC;
 
 namespace IshoTyping
 {
@@ -26,16 +25,40 @@ namespace IshoTyping
     /// App.xaml の相互作用ロジック
     /// </summary>
     /// 
-
-
     public partial class App : Application
     {
+        public DiscordRpcClient client;
+        public void RPC()
+        {
+            client = new DiscordRpcClient(RPCToken.token);
+
+            client.OnReady += (sender, e) =>
+            {
+                Console.WriteLine("Received Ready from user {0}", e.User.Username);
+            };
+
+            client.OnPresenceUpdate += (sender, e) =>
+            {
+                Console.WriteLine("Received Update! {0}", e.Presence);
+            };
+
+            client.Initialize();
+
+            client.SetPresence(new RichPresence()
+            {
+                Details = "Hacker",
+                State = "Typing away",
+                Assets = new Assets()
+                {
+                    LargeImageKey = "icon",
+                    LargeImageText = "IshoTyping"
+                }
+            });
+        }
+
         static string Version = "1.3.2";
         static bool SV = false; // サテライト可能の場合のみ true にする
         static string path = "app_a.config"; // データ保存先
-
-        string consumerkey = "nQlUAeqx2VmNhsMEuzmjg";
-        string consumersecret = "4IZfxxdCwpdQhmZigvdpVFavKzztsm9eHqDGEbpFkyI";
 
         static string symbols = "!\"#$%&'()-^\\@[;:],./=~～〜|`{+*}<>?_ 　・･、､。｡「」｢｣゛ﾞ゜ﾟ"
             + "！”＃＄％＆’（）－―＾￥｜＠｀［｛；＋：＊］｝＜＞？＿"
@@ -184,7 +207,10 @@ namespace IshoTyping
         int nothingfailed;
 
 
-
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            client.Dispose();
+        }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -192,6 +218,10 @@ namespace IshoTyping
             PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Critical;
 
             initialize(0);
+            RPC();
+            var timer = new System.Timers.Timer(150);
+            timer.Elapsed += (senderer, args) => { client.Invoke(); };
+            timer.Start();
         }
 
         private void EndSelect(object sender, EventArgs e)
@@ -7094,6 +7124,7 @@ namespace IshoTyping
         void Rb_28_0_Click(object sender, RoutedEventArgs e) { romajisetting[28] = 0; }
         void Rb_28_1_Click(object sender, RoutedEventArgs e) { romajisetting[28] = 1; }
         void Rb_29_0_Click(object sender, RoutedEventArgs e) { romajisetting[29] = 0; }
+
         void Rb_29_1_Click(object sender, RoutedEventArgs e) { romajisetting[29] = 1; }
         void Rb_30_0_Click(object sender, RoutedEventArgs e) { romajisetting[30] = 0; }
         void Rb_30_1_Click(object sender, RoutedEventArgs e) { romajisetting[30] = 1; }
