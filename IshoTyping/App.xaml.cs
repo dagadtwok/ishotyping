@@ -28,7 +28,7 @@ namespace IshoTyping
     public partial class App : Application
     {
         public DiscordRpcClient client;
-        public void RPC()
+        public void RPC(string song)
         {
             client = new DiscordRpcClient(RPCToken.token);
 
@@ -44,16 +44,33 @@ namespace IshoTyping
 
             client.Initialize();
 
-            client.SetPresence(new RichPresence()
+            if (song == "none")
             {
-                Details = "Hacker",
-                State = "Typing away",
-                Assets = new Assets()
+                client.SetPresence(new RichPresence()
                 {
-                    LargeImageKey = "icon",
-                    LargeImageText = "IshoTyping"
-                }
-            });
+                    Details = "Hacker",
+                    State = "Typing away",
+                    Assets = new Assets()
+                    {
+                        LargeImageKey = "icon",
+                        LargeImageText = "IshoTyping"
+                    }
+                });
+            }
+            else 
+            {
+                client.SetPresence(new RichPresence()
+                {
+                    Details = "Playing:" + song,
+                    State = "Typing away",
+                    Assets = new Assets()
+                    {
+                        LargeImageKey = "icon",
+                        LargeImageText = "IshoTyping"
+                    }
+                });
+            }
+
         }
 
         static string Version = "1.3.2";
@@ -218,7 +235,7 @@ namespace IshoTyping
             PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Critical;
 
             initialize(0);
-            RPC();
+            RPC("none");
             var timer = new System.Timers.Timer(150);
             timer.Elapsed += (senderer, args) => { client.Invoke(); };
             timer.Start();
@@ -997,6 +1014,7 @@ namespace IshoTyping
             nowline = 0;
             linemode = 0;
             lineupdate(0);
+            RPC(fmlist[foldernumber][musicnumber].artist + " " + fmlist[foldernumber][musicnumber].name);
         }
 
         void Copy_Hash_Value_Click(object sender, RoutedEventArgs e)
@@ -6172,6 +6190,7 @@ namespace IshoTyping
                 new PenDescription("kpm"));
             */
             datasave();
+            RPC("none");
             return;
 
         }
