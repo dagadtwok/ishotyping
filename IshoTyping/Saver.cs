@@ -74,15 +74,13 @@ namespace IshoTyping
         }
 
         public Saver(List<HighScoreData> highscores, byte[] romajisetting, double fontsize,
-            double volume, bool kpmswitch, string accesstoken, string accesstokensecret, uint experimentalvalue, int settingoffset)
+            double volume, bool kpmswitch, uint experimentalvalue, int settingoffset)
         {
             _highscores = highscores;
             _romajisetting = romajisetting;
             _fontsize = fontsize;
             _volume = volume;
             _kpmswitch = kpmswitch;
-            _accesstoken = accesstoken;
-            _accesstokensecret = accesstokensecret;
             _experimentalvalue = experimentalvalue;
             _settingoffset = settingoffset;
         }

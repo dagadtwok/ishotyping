@@ -17,7 +17,6 @@ using System.Windows.Input;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Research.DynamicDataDisplay.PointMarkers;
-using TweetSharp;
 
 
 
@@ -113,11 +112,6 @@ namespace IshoTyping
 
         double fontsize = 30.0;
 
-        static string Accestoken = "";
-        static string Accestokensecret = "";
-
-
-
 
 
         // プレイ関係の変数
@@ -189,12 +183,6 @@ namespace IshoTyping
         /// </summary>
         int nothingfailed;
 
-        /// <summary>
-        /// 結果をtweetする際の内容（コメントは含まない。tweet時に無理矢理くっつける）
-        /// </summary>
-        string resulttweetcontent1 = "";
-        string resulttweetcontent2 = "";
-        string resulttweetcontent3 = "";
 
 
 
@@ -426,8 +414,6 @@ namespace IshoTyping
                 fontsize = s.fontsize;
                 volume = s.volume;
                 kpmswitch = s.kpmswitch;
-                Accestoken = s.accestoken;
-                Accestokensecret = s.accesstokensecret;
                 settingoffset = s.settingoffset;
 
                 reflectromajisetting();
@@ -456,7 +442,7 @@ namespace IshoTyping
             FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(fs,
-                new Saver(highscores, romajisetting, fontsize, volume, kpmswitch, Accestoken, Accestokensecret, experimentalvalue, settingoffset));
+                new Saver(highscores, romajisetting, fontsize, volume, kpmswitch, experimentalvalue, settingoffset));
             fs.Close();
         }
 
@@ -1310,22 +1296,10 @@ namespace IshoTyping
             lineupdate(0);
         }
 
-        TwitterService ts;
-        OAuthRequestToken oart;
-        AuthWindow aw;
 
         void AuthorizationButton_Click(object sender, RoutedEventArgs e)
         {
 
-            aw = new AuthWindow();
-
-            ts = new TwitterService(consumerkey, consumersecret);
-            oart = ts.GetRequestToken();
-            aw.browser.Source = ts.GetAuthorizationUri(oart);
-
-            aw.AuthButton.Click += AuthButton_Click;
-            aw.PinTextBox.KeyDown += PinTextBox_KeyDown;
-            aw.ShowDialog();
         }
 
         void PinTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -5926,13 +5900,13 @@ namespace IshoTyping
                 FontWeight = FontWeights.Bold
             });
 
-            resulttweetcontent1 = mainWindow.MusicNameTextBlock.Text;
+      /*      resulttweetcontent1 = mainWindow.MusicNameTextBlock.Text;
             resulttweetcontent2 = mainWindow.ArtistTextBlock.Text;
             resulttweetcontent3 = ""
                  + "Pnts:" + points + "\n" + "Rank:" + classcalc(lyricsdata0needtype, lyricsdata0needkpm, kpm, miss, correct) + "\n"
                  + "Crct/Miss:" + correct + "/" + miss + "（" + accuracy + "%）" + "\n"
                  + "kpm:" + kpm + "\n" + "Cmb:" + maxcombo + "\n"
-                 + "Comp/Fail:" + complete + "/" + failed;
+                 + "Comp/Fail:" + complete + "/" + failed;*/
 
 
 
