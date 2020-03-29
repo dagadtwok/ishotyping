@@ -267,7 +267,7 @@ namespace IshoTyping
             // フォルダリスト読み込み
             if (!File.Exists("folderlist.xml"))
             {
-                MessageBox.Show("folderlist.xmlが読み込めません。");
+                MessageBox.Show("Cannot read folderlist.xml or it doesen't exist");
                 Environment.Exit(0);
             }
             flist = new List<FolderList>();
@@ -397,7 +397,7 @@ namespace IshoTyping
                     }
                     catch (XmlException xe)
                     {
-                        MessageBox.Show(musicxmlpath + "に問題があります。\n\n" + xe.ToString());
+                        MessageBox.Show(musicxmlpath + "theres a problem\n\n" + xe.ToString());
                     }
                     reader.Close();
                     fStream.Close();
@@ -6190,6 +6190,7 @@ namespace IshoTyping
                 new PenDescription("kpm"));
             */
             datasave();
+            _audioClock.Controller.Stop();
             RPC("none");
             return;
 
