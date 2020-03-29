@@ -44,9 +44,9 @@
                         <ListView x:Name="musiclistview" ItemsSource="{Binding}" Grid.Column="1" Margin="10,36,10,10" BorderThickness="1">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="曲名" DisplayMemberBinding="{Binding Path=name}" />
-                                    <GridViewColumn Header="アーティスト" DisplayMemberBinding="{Binding Path=artist}" />
-                                    <GridViewColumn Header="ジャンル" DisplayMemberBinding="{Binding Path=genre}" />
+                                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Path=name}" />
+                                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Path=artist}" />
+                                    <GridViewColumn Header="Genre" DisplayMemberBinding="{Binding Path=genre}" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -243,9 +243,9 @@
                             <GroupBox Header="Playing Settings" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
                                 
                                 <StackPanel>
-                                    <CheckBox x:Name="KpmSwitchCheckBox" Content="kpm計算に初速を含める" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                                    <CheckBox x:Name="KpmSwitchCheckBox" Content="Calculate initial speed in score" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" Text="オフセット（ミリ秒）:" VerticalAlignment="Top"/>
+                                        <TextBlock HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" Text="Offset:" VerticalAlignment="Top"/>
                                         <Slider x:Name="OffsetSlider" Maximum="500" Minimum="-500" Margin="10" VerticalAlignment="Top" Width="250" AutoToolTipPlacement="TopLeft" />
                                     </StackPanel>
                                 </StackPanel>
