@@ -6129,6 +6129,9 @@ namespace IshoTyping
 
             plotter.Children.Add(hat);
             plotter.Children.Add(vat);
+            plotter.Foreground = new SolidColorBrush(Color.FromArgb(255, 7, 144, 142));
+            plotter.ContextMenu.Visibility = Visibility.Hidden;
+            plotter.Background = new SolidColorBrush(Color.FromArgb(255, 37, 37, 37));
 
             mainWindow.plotterpanel.Children.RemoveAt(0);
             mainWindow.plotterpanel.Children.Add(plotter);

@@ -53,11 +53,11 @@
                         <Label Content="Music Info" Grid.Row="0" Grid.Column="2" FontSize="14" FontWeight="Bold" Margin="10,0" VerticalAlignment="Top" Height="31"/>
                         <TextBox x:Name="searchbox" Height="26" Margin="10,0,10,10" Grid.Row="1" TextWrapping="Wrap" Text="" Controls:TextboxHelper.Watermark="Search Box" VerticalAlignment="Bottom" Grid.Column="1" Controls:TextboxHelper.ClearTextButton="True"/>
                         <CheckBox x:Name="beyondfoldercheck"  Content="Search Inside Folders" HorizontalAlignment="Right" Margin="10" Grid.Row="1"/>
-                        <Button x:Name="PlayButton" Content="Play" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,70" VerticalAlignment="Bottom" Width="124" Height="52" FontSize="16" BorderThickness="2" IsEnabled="False"/>
-                        <Button x:Name="DeleteHighScoreButton" Content="Delete High Score" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,40" VerticalAlignment="Bottom" Width="124" Foreground="Red" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                        <Button x:Name="PlayButton" Content="Play" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="342" Height="52" FontSize="16" BorderThickness="2" IsEnabled="False" Grid.RowSpan="2"/>
+                        <Button x:Name="DeleteHighScoreButton" Content="Delete High Score" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,102" VerticalAlignment="Bottom" Width="124" Foreground="Red" HorizontalContentAlignment="Center" IsEnabled="False"/>
                         <TextBlock x:Name="infotext" Grid.Column="2" Margin="10,36,10,127" TextWrapping="Wrap"/>
                         <TextBlock x:Name="ExperimentalValueTextBlock" HorizontalAlignment="Left" Margin="10,22,0,10" Grid.Row="1" TextWrapping="Wrap" Text="exp:0" VerticalAlignment="Bottom"/>
-                        <Button x:Name="Copy_Hash_Value" Content="Copy Hash Value" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="124" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                        <Button x:Name="Copy_Hash_Value" Content="Copy Hash Value" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,70" VerticalAlignment="Bottom" Width="124" HorizontalContentAlignment="Center" IsEnabled="False"/>
                     </Grid>
                 </DockPanel>
             </TabItem>
@@ -70,9 +70,16 @@
                             <TextBlock TextWrapping="Wrap" Text="Loading..." HorizontalAlignment="Center" FontStyle="Italic" Foreground="#FF41B1FF"/>
                         </StackPanel>
                     </Grid>
-                    <Grid x:Name="ReadyGridPanel" Panel.ZIndex="1" Margin="0,0,0,0" Background="#D8FFFFFF" FocusVisualStyle="{x:Null}" Focusable="True" Visibility="Hidden" InputMethod.IsInputMethodEnabled="False">
+                    <Grid x:Name="ReadyGridPanel" Panel.ZIndex="1" Margin="0,0,0,0" FocusVisualStyle="{x:Null}" Focusable="True" Visibility="Hidden" InputMethod.IsInputMethodEnabled="False">
+                        <Grid.Background>
+                            <RadialGradientBrush>
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="#7F000000" Offset="1"/>
+                                <GradientStop Color="#A5000000" Offset="0.617"/>
+                            </RadialGradientBrush>
+                        </Grid.Background>
                         <TextBlock TextWrapping="Wrap" FontStyle="Italic" Foreground="#FF41B1FF" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center">
-                            <Run FontSize="20">Ready to Play.</Run><LineBreak />Press space key to start.
+                            <Run FontSize="20" FontStyle="Normal">Ready to Play.</Run><LineBreak />Press space key to start.
                         </TextBlock>
                     </Grid>
                     <Grid x:Name="PlayMainGridPanel" Panel.ZIndex="0" Margin="0,0,0,0" Focusable="True" FocusVisualStyle="{x:Null}" InputMethod.IsInputMethodEnabled="False">
@@ -80,7 +87,7 @@
                             <RowDefinition Height="100"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Image x:Name="bgimage" HorizontalAlignment="Center" Height="720" Margin="-7,-71,-6,-7" VerticalAlignment="Center" Width="1279" Grid.RowSpan="2" Stretch="UniformToFill" Opacity="0.4">
+                        <Image x:Name="bgimage" HorizontalAlignment="Center" Margin="-7,-71,-6,-7" VerticalAlignment="Center" Grid.RowSpan="2" Stretch="UniformToFill" Opacity="0.4">
                             <Image.Effect>
                                 <BlurEffect Radius="51"/>
                             </Image.Effect>
