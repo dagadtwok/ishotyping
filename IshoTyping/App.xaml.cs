@@ -1015,7 +1015,9 @@ namespace IshoTyping
             nowline = 0;
             linemode = 0;
             lineupdate(0);
-            mainWindow.bgimage.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "IMG\\" + fmlist[foldernumber][musicnumber].name + ".jpg"));
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "IMG\\" + fmlist[foldernumber][musicnumber].name + ".jpg")) {
+                mainWindow.bgimage.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "IMG\\" + fmlist[foldernumber][musicnumber].name + ".jpg"));
+            }
             RPC(fmlist[foldernumber][musicnumber].name + " by " +  fmlist[foldernumber][musicnumber].artist);
         }
 
