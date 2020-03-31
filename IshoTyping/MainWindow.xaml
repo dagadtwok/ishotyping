@@ -626,8 +626,8 @@
                     </TabItem>
                     <TabItem Header="About">
                         <StackPanel>
-                            <TextBlock TextWrapping="Wrap" Text="IshoTypingの基本的な情報の表示" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,10" FontSize="18" Foreground="#FF0000AE"/>
-                            <GroupBox Header="IshoTypingのバージョン" Margin="10,5" VerticalAlignment="Top">
+                            <TextBlock TextWrapping="Wrap" Text="About" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,10" FontSize="18" Foreground="#FF0000AE"/>
+                            <GroupBox Header="IshoTyping" Margin="10,5" VerticalAlignment="Top">
                                 <Grid>
                                     <Grid.Resources>
                                         <BitmapImage x:Key="logo" UriSource="Resources\logo_s.png" />
@@ -637,18 +637,17 @@
                                         <ColumnDefinition Width="450"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock x:Name="VersionTextBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="IshoTyping {Version}" VerticalAlignment="Top" FontSize="14"/>
-                                    <TextBlock HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="© 2013 Ishotihadus All rights reserved." VerticalAlignment="Top" FontSize="14"/>
                                     <Image Source="{StaticResource logo}" Grid.Column="1" />
                                 </Grid>
                             </GroupBox>
-                            <GroupBox Header="サポート" Margin="10,5" VerticalAlignment="Top">
+                            <GroupBox Header="Contact" Margin="10,5" VerticalAlignment="Top">
                                 <Grid>
-                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Twitterアカウント : "/><Hyperlink NavigateUri="https://twitter.com/IshoTyping" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="@IshoTyping"/></Hyperlink></TextBlock>
-                                    <TextBlock HorizontalAlignment="Left" Margin="10,36,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Webサイト : "/><Hyperlink NavigateUri="https://sites.google.com/site/ishotyping" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="IshoTyping Official Web Site"/></Hyperlink></TextBlock>
-                                    <TextBlock HorizontalAlignment="Left" Margin="10,80,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="製作者Twitterアカウント : "/><Hyperlink NavigateUri="https://twitter.com/Ishotihadus" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="@Ishotihadus"/></Hyperlink></TextBlock>
-                                    <TextBlock HorizontalAlignment="Left" Margin="10,106,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="製作者Webサイト : "/><Hyperlink NavigateUri="https://sites.google.com/site/ishotihadus/" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="Ishotihadus on Twitter"/></Hyperlink></TextBlock>
-                                    <TextBlock HorizontalAlignment="Left" Margin="10,132,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Eメールアドレス : "/><Hyperlink NavigateUri="mailto:hanachan.pao@gmail.com" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="hanachan.pao@gmail.com"/></Hyperlink><Run Text="（クリックで標準メーラーを起動します）"/></TextBlock>
-                                    <TextBlock HorizontalAlignment="Left" Margin="10,176,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Text="バグの報告や、ご意見・ご要望・ご相談はtwitterもしくはメールにてお願いします。" />
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Twitter: "/><Hyperlink NavigateUri="https://twitter.com/IshoTyping" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="@IshoTyping"/></Hyperlink></TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,36,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Website: "/><Hyperlink NavigateUri="https://sites.google.com/site/ishotyping" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="IshoTyping Official Web Site"/></Hyperlink></TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,80,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Ishotihadus's Twitter: "/><Hyperlink NavigateUri="https://twitter.com/Ishotihadus" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="@Ishotihadus"/></Hyperlink></TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,106,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Ishotihadus's Website : "/><Hyperlink NavigateUri="https://www.ishotihadus.com/" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="Ishotihadus on Twitter"/></Hyperlink></TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,132,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="E-Mail: "/><Hyperlink NavigateUri="mailto:hanachan.pao@gmail.com" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="hanachan.pao@gmail.com"/></Hyperlink></TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,176,0,10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Text="Ishotihadus no longer support this project, so don't mail or tweet at him. If you found any bugs or have request please visit our GitHub repo" />
                                 </Grid>
                             </GroupBox>
                         </StackPanel>

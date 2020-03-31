@@ -49,7 +49,7 @@ namespace IshoTyping
             {
                 client.SetPresence(new RichPresence()
                 {
-                    Details = "Hacker",
+                    Details = "Idling",
                     State = "Typing away",
                     Assets = new Assets()
                     {
@@ -306,7 +306,7 @@ namespace IshoTyping
             }
             catch (XmlException xmlex)
             {
-                MessageBox.Show("folderlist.xmlを読み込む際にエラーが発生しました。\n\n" + xmlex);
+                MessageBox.Show("folderlist.xml there was an error reading the file\n\n" + xmlex);
                 Environment.Exit(0);
             }
             reader.Close();
