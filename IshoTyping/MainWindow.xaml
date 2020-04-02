@@ -7,11 +7,8 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:Behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         Title="IshoTyping" Height="720" Width="1280" MinWidth="600" MinHeight="400" Icon="icon_64.ico"
-        ShowIconOnTitleBar="False" SaveWindowPosition="True">
-    <i:Interaction.Behaviors>
-        <Behaviours:BorderlessWindowBehavior AllowsTransparency="False" EnableDWMDropShadow="True"/>
-    </i:Interaction.Behaviors>
-    <Window.Resources>
+        ShowIconOnTitleBar="False" SaveWindowPosition="True" EnableDWMDropShadow="True">
+    <Controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
@@ -22,8 +19,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>
-
+    </Controls:MetroWindow.Resources>
     <Grid>
         <TabControl x:Name="MainTabPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedIndex="0">
             <TabItem x:Name="SelectMusicTab" Header="Select Music">
@@ -51,7 +47,7 @@
                             </ListView.View>
                         </ListView>
                         <Label Content="Music Info" Grid.Row="0" Grid.Column="2" FontSize="14" FontWeight="Bold" Margin="10,0" VerticalAlignment="Top" Height="31"/>
-                        <TextBox x:Name="searchbox" Height="26" Margin="10,0,10,10" Grid.Row="1" TextWrapping="Wrap" Text="" Controls:TextboxHelper.Watermark="Search Box" VerticalAlignment="Bottom" Grid.Column="1" Controls:TextboxHelper.ClearTextButton="True"/>
+                        <TextBox x:Name="searchbox" Height="26" Margin="10,0,10,10" Grid.Row="1" TextWrapping="Wrap" Text="" Controls:TextBoxHelper.Watermark="Search Box" VerticalAlignment="Bottom" Grid.Column="1"/>
                         <CheckBox x:Name="beyondfoldercheck"  Content="Search Inside Folders" HorizontalAlignment="Right" Margin="10" Grid.Row="1"/>
                         <Button x:Name="PlayButton" Content="Play" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="342" Height="52" FontSize="16" BorderThickness="2" IsEnabled="False" Grid.RowSpan="2"/>
                         <Button x:Name="DeleteHighScoreButton" Content="Delete High Score" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,102" VerticalAlignment="Bottom" Width="124" Foreground="Red" HorizontalContentAlignment="Center" IsEnabled="False"/>
