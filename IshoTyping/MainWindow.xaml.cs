@@ -32,6 +32,5 @@ namespace IshoTyping
         {
             System.Diagnostics.Process.Start(e.Uri.ToString());
         }
-
     }
 }

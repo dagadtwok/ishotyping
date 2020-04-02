@@ -246,11 +246,11 @@ namespace IshoTyping
             var timer = new System.Timers.Timer(150);
             timer.Elapsed += (senderer, args) => { client.Invoke(); };
             timer.Start();
-            Thread musicscan = new Thread(newmusicscan);
-            musicscan.Start();
+            newmusicscan();
         }
 
         private void newmusicscan() {
+           
             if (Directory.Exists("Songs")) {
                 string[] dir = Directory.GetDirectories("Songs", "*");
                 for (int i = 0; i < dir.Length; i++)
@@ -270,12 +270,26 @@ namespace IshoTyping
                         xml = true;
                     }
                     if (bg && mp3 && xml) {
-                        newmusiclist.npath.Add(dir[i]);
+                        XmlTextReader rd = new XmlTextReader(dir[i] + "\\track.xml");
+                        while (rd.Read()) {
+
+                            switch (rd.Name) {
+                                case "title":
+                                    newmusiclist.ntitle.Add(rd.ReadString());
+                                    break;
+
+                                case "artist":
+                                    newmusiclist.nartist.Add(rd.ReadString());
+                                    break;
+                            }
+
+                        }
+                        newmusiclist.npath.Add(dir[i].Split('\\')[1]);
                     }
                 }
                 for (int i = 0; i < newmusiclist.npath.Count; i++)
                 {
-                    MessageBox.Show(newmusiclist.npath[i]);
+                    mainWindow.newmusicL.Items.Add(newmusiclist.ntitle[i] + " by " + newmusiclist.nartist[i]);
                 }
             }
         }
