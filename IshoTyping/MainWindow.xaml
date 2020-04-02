@@ -620,7 +620,7 @@
                             </Expander>
                         </StackPanel>
                     </TabItem>
-                    <TabItem Header="About">
+                    <TabItem Header="About" Height="39" VerticalAlignment="Bottom">
                         <StackPanel>
                             <TextBlock TextWrapping="Wrap" Text="About" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,10" FontSize="18" Foreground="#FF0000AE"/>
                             <GroupBox Header="IshoTyping" Margin="10,5" VerticalAlignment="Top">

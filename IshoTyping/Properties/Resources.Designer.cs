@@ -59,5 +59,15 @@ namespace IshoTyping.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BuildDate {
+            get {
+                object obj = ResourceManager.GetObject("BuildDate", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

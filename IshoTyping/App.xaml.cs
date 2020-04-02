@@ -74,7 +74,7 @@ namespace IshoTyping
 
         }
 
-        static string Version = "1.3.2";
+        static string Version = "Build: " + System.Text.Encoding.UTF8.GetString(IshoTyping.Properties.Resources.BuildDate);
         static bool SV = false; // サテライト可能の場合のみ true にする
         static string path = "app_a.config"; // データ保存先
 
@@ -86,6 +86,12 @@ namespace IshoTyping
 
         List<FolderList> flist;
         List<List<MusicList>> fmlist = new List<List<MusicList>>();
+
+        struct newmusiclist {
+            public static List<string> ntitle = new List<string>();
+            public static List<string> nartist = new List<string>();
+            public static List<string> npath = new List<string>();
+        }
 
         /// <summary>
         /// 歌詞データを保存する
@@ -240,8 +246,39 @@ namespace IshoTyping
             var timer = new System.Timers.Timer(150);
             timer.Elapsed += (senderer, args) => { client.Invoke(); };
             timer.Start();
+            Thread musicscan = new Thread(newmusicscan);
+            musicscan.Start();
         }
 
+        private void newmusicscan() {
+            if (Directory.Exists("Songs")) {
+                string[] dir = Directory.GetDirectories("Songs", "*");
+                for (int i = 0; i < dir.Length; i++)
+                {
+                    bool bg = false;
+                    bool xml = false;
+                    bool mp3 = false;
+                    if (File.Exists(dir[i] + "\\bg.jpg")) {
+                        bg = true;
+                    }
+                    if (File.Exists(dir[i] + "\\bg.mp3"))
+                    {
+                        mp3 = true;
+                    }
+                    if (File.Exists(dir[i] + "\\track.xml"))
+                    {
+                        xml = true;
+                    }
+                    if (bg && mp3 && xml) {
+                        newmusiclist.npath.Add(dir[i]);
+                    }
+                }
+                for (int i = 0; i < newmusiclist.npath.Count; i++)
+                {
+                    MessageBox.Show(newmusiclist.npath[i]);
+                }
+            }
+        }
         private void EndSelect(object sender, EventArgs e)
         {
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure to end IshoTyping?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
