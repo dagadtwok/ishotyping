@@ -363,9 +363,9 @@ namespace IshoTyping
             reader.Close();
             fStream.Close();
 
-            for (int i = 0; i < flist.Count; i++)
+            for (int i = 0; i < mainWindow.newmusicL.Items.Count; i++)
             {
-                string musicxmlpath = flist[i].directory;
+                string musicxmlpath = newmusiclist.npath[mainWindow.newmusicL.SelectedIndex];
 
                 if (!File.Exists(musicxmlpath))
                 {
@@ -462,6 +462,7 @@ namespace IshoTyping
             // イベントリスナの実装
             mainWindow.folderlistbox.SelectionChanged += folderlistbox_SelectionChanged;
             mainWindow.musiclistview.SelectionChanged += musiclistview_SelectionChanged;
+            mainWindow.newmusicL.SelectionChanged += musiclistview_SelectionChanged;
             mainWindow.searchbox.KeyDown += searchbox_KeyDown;
             mainWindow.PlayButton.Click += PlayButton_Click;
             mainWindow.Copy_Hash_Value.Click += Copy_Hash_Value_Click;
@@ -596,7 +597,7 @@ namespace IshoTyping
 
         void musiclistview_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (mainWindow.MainTabPanel.SelectedIndex != 0)
+           /* if (mainWindow.newmusicL.SelectedIndex != 0)
                 return;
 
             folderid = mainWindow.folderlistbox.SelectedIndex;
@@ -660,7 +661,7 @@ namespace IshoTyping
                 mainWindow.Copy_Hash_Value.IsEnabled = false;
                 mainWindow.DeleteHighScoreButton.IsEnabled = false;
                 return;
-            }
+            }*/
             mainWindow.PlayButton.IsEnabled = true;
             mainWindow.Copy_Hash_Value.IsEnabled = true;
 
@@ -668,7 +669,7 @@ namespace IshoTyping
             List<string> word = new List<string>();
             List<int> interval = new List<int>();
             List<Object> color = new List<Object>();
-            FileStream fStream = new FileStream(fmlist[folderid][selectedid].xmlpath, FileMode.Open, FileAccess.Read);
+            FileStream fStream = new FileStream("Songs\\" + newmusiclist.npath[mainWindow.newmusicL.SelectedIndex] + "\\track.xml", FileMode.Open, FileAccess.Read);
             XmlTextReader reader = new XmlTextReader(fStream);
 
             string hashstring = "";
@@ -831,7 +832,7 @@ namespace IshoTyping
                 if (highscores[i].hashcode == lyricsdata0hashcode)
                 {
                     lyricsdata0highscoredatanum = i;
-                    highscores[i].xmlpath = fmlist[folderid][selectedid].xmlpath;
+                    highscores[i].xmlpath = AppDomain.CurrentDomain.BaseDirectory + "\\Songs" + newmusiclist.npath[mainWindow.newmusicL.SelectedIndex] + "\\track.xml";
                     break;
                 }
             }
@@ -840,7 +841,7 @@ namespace IshoTyping
             {
                 for (int i = 0; i < highscores.Count(); i++)
                 {
-                    if (highscores[i].xmlpath == fmlist[folderid][selectedid].xmlpath)
+                    if (highscores[i].xmlpath == AppDomain.CurrentDomain.BaseDirectory + "\\Songs" + newmusiclist.npath[mainWindow.newmusicL.SelectedIndex] + "\\track.xml")
                     {
                         lyricsdata0highscoredatanum = i;
                         highscores[i].hashcode = lyricsdata0hashcode;
@@ -1051,9 +1052,9 @@ namespace IshoTyping
             folderid = foldernumber;
             selectedid = musicnumber;
 
-            mainWindow.MusicNameTextBlock.Text = fmlist[foldernumber][musicnumber].name;
-            mainWindow.ArtistTextBlock.Text = fmlist[foldernumber][musicnumber].artist;
-            mainWindow.GenreTextBlock.Text = fmlist[foldernumber][musicnumber].genre;
+            mainWindow.MusicNameTextBlock.Text = newmusiclist.ntitle[mainWindow.newmusicL.SelectedIndex];
+            mainWindow.ArtistTextBlock.Text = newmusiclist.nartist[mainWindow.newmusicL.SelectedIndex];
+           // mainWindow.GenreTextBlock.Text = fmlist[foldernumber][musicnumber].genre;
             mainWindow.MusicBarRightTextBlock.Text = "Music  0:00 / "
                 + timetostring((int)(lyricsdata[0][lyricsdata[0].Count - 1].endtime() + musicoffset + settingoffset) / 1000);
             mainWindow.MusicProgressBar.Maximum = lyricsdata[0][lyricsdata[0].Count - 1].endtime() + musicoffset + settingoffset;
@@ -1064,10 +1065,10 @@ namespace IshoTyping
             nowline = 0;
             linemode = 0;
             lineupdate(0);
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "IMG\\" + fmlist[foldernumber][musicnumber].name + ".jpg")) {
-                mainWindow.bgimage.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "IMG\\" + fmlist[foldernumber][musicnumber].name + ".jpg"));
+            if (File.Exists("Songs\\" + newmusiclist.npath[mainWindow.newmusicL.SelectedIndex] + "\\bg.jpg")) {
+                mainWindow.bgimage.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Songs\\" + newmusiclist.npath[mainWindow.newmusicL.SelectedIndex] + "\\bg.jpg"));
             }
-            RPC(fmlist[foldernumber][musicnumber].name + " by " +  fmlist[foldernumber][musicnumber].artist);
+            RPC(newmusiclist.ntitle[mainWindow.newmusicL.SelectedIndex] + " by " + newmusiclist.nartist[mainWindow.newmusicL.SelectedIndex]);
         }
 
         void Copy_Hash_Value_Click(object sender, RoutedEventArgs e)
@@ -1107,7 +1108,7 @@ namespace IshoTyping
                     mainWindow.ReadyGridPanel.Visibility = Visibility.Hidden;
 
                     _audioTimeline = new MediaTimeline();
-                    _audioTimeline.Source = new Uri(System.IO.Path.GetFullPath(fmlist[folderid][selectedid].musicpath));
+                    _audioTimeline.Source = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\Songs" + newmusiclist.npath[mainWindow.newmusicL.SelectedIndex] + "\\bg.mp3");
                     _audioClock = _audioTimeline.CreateClock();
                     _audioPlayer = new MediaPlayer();
                     _audioPlayer.Clock = _audioClock;

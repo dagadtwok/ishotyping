@@ -58,7 +58,7 @@
                         <TextBlock x:Name="infotext" Grid.Column="2" Margin="10,36,10,127" TextWrapping="Wrap"/>
                         <TextBlock x:Name="ExperimentalValueTextBlock" HorizontalAlignment="Left" Margin="10,22,0,10" Grid.Row="1" TextWrapping="Wrap" Text="exp:0" VerticalAlignment="Bottom"/>
                         <Button x:Name="Copy_Hash_Value" Content="Copy Hash Value" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,70" VerticalAlignment="Bottom" Width="124" HorizontalContentAlignment="Center" IsEnabled="False"/>
-                        <ListBox x:Name="newmusicL" Grid.Column="1" HorizontalAlignment="Left" Height="360" Margin="10,224,0,0" VerticalAlignment="Top" Width="522"/>
+                        <ListBox x:Name="newmusicL" Grid.Column="1" HorizontalAlignment="Left" Height="360" Margin="10,224,0,0" VerticalAlignment="Top" Width="522" SelectionChanged="newmusicL_SelectionChanged"/>
                     </Grid>
                 </DockPanel>
             </TabItem>

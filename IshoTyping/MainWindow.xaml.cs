@@ -32,5 +32,15 @@ namespace IshoTyping
         {
             System.Diagnostics.Process.Start(e.Uri.ToString());
         }
+
+        private void musiclistview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void newmusicL_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PlayButton.IsEnabled = true;
+        }
     }
 }
