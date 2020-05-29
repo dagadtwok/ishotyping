@@ -295,7 +295,7 @@ namespace IshoTyping
         }
         private void EndSelect(object sender, EventArgs e)
         {
-            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure to end IshoTyping?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you want to exit IshoTyping?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             switch (messageBoxResult)
             {
                 case MessageBoxResult.Yes:
@@ -1081,7 +1081,7 @@ namespace IshoTyping
             if (lyricsdata0highscoredatanum == -1 || mainWindow.musiclistview.SelectedIndex == -1)
                 return;
 
-            MessageBoxResult msr = MessageBox.Show("Are you sure to delete the high score?", "Confirmation",
+            MessageBoxResult msr = MessageBox.Show("Are you sure you want to delete the high score?", "Confirmation",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             switch (msr)
